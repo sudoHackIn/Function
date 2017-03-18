@@ -15,7 +15,7 @@ Equation first = new Equation(new Param("LOL"), new Variable("100500", 100500.0)
 
 Here we describe `equation behavior` with this param and variable
 ```java
-first.function((i)->{
+first.functionStatement((i)->{
      return i.value("LOL") + i.value("100500");
 });
 ```
@@ -28,7 +28,7 @@ The result would be: `First Equation 100501.0`
 
 Evaluate this equation again and now pass argument value `100`
 ```java
-System.out.println("First Equation " + first.evaluate(new Argument("LOL", 100)));
+System.out.println("First Equation " + first.evaluateStatement(new Argument("LOL", 100)));
 ```
 The result would be: `First Equation 100600.0`
 
@@ -44,7 +44,7 @@ Equation equation = new Equation(
 ```
 Describe behavior like that `X1 * X2 + a * tau`
 ```java
-        equation.function((a)-> {
+        equation.functionStatement((a)-> {
             return a.value("X1") * a.value("X2") + a.value("a") * a.value("tau");
         });
 
@@ -53,11 +53,11 @@ Create to arguments - X1 with value `2.0` and X2 with value `2.0`
 ```java
         Argument X1 = new Argument("X1", 2.0);
         Argument X2 = new Argument("X2", 2.0);
-        System.out.println("Equation " +  equation.evaluate(X1, X2));
+        System.out.println("Equation " +  equation.evaluateStatement(X1, X2));
         X1.setValue(5.0);
-        System.out.println("Equation " + equation.evaluate(X1, X2));
+        System.out.println("Equation " + equation.evaluateStatement(X1, X2));
         X2.setValue(5.0);
-        System.out.println("Equation " + equation.evaluate(X1, X2));
+        System.out.println("Equation " + equation.evaluateStatement(X1, X2));
     }
 ```
 The ouput will be: `Equation 6.0`
