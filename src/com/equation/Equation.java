@@ -20,7 +20,8 @@ package com.equation;
  */
 
 public class Equation{
-    private Evaluating functionMap;
+    private Statement functionStatement;
+    private Inequality functionInequality;
     private EquationMap variableMap;
 
     /**
@@ -46,8 +47,20 @@ public class Equation{
      *                  }
      * @since 18.03.2017
      */
-    public void function(Evaluating function){
-        functionMap = function;
+    public void functionStatement(Statement function){
+        functionStatement = function;
+    }
+
+    /**
+     * Method that save presented equation behavior for it's lately using
+     * @param function lambda expression that describes equation behavior
+     *                  {@code
+     *                  function((a)->{a.get({@link Variable} or {@link Param}.value(), ...});
+     *                  }
+     * @since 18.03.2017
+     */
+    public void functionInequality(Inequality function){
+        functionInequality = function;
     }
 
     /**
@@ -55,10 +68,23 @@ public class Equation{
      * @param params List of {@link Argument} that are used as equation arguments to pass value for @{link Param} in equation
      * @return double result of stored equation behavior
      */
-    public double evaluate(Storable ... params){
+    public double evaluateStatement(Storable ... params){
         for(Storable p: params){
            variableMap.get(p.name()).setValue(p.value());
         }
-        return functionMap.evaluate(variableMap);
+        return functionStatement.evaluate(variableMap);
+    }
+
+    /**
+     * Function that update presented in Equation Param values and then evaluate saved behavior
+     * @param params List of {@link Argument} that are used as equation arguments to pass value for @{link Param} in equation
+     * @return boolean boolean result of stored equation behavior
+     */
+    public boolean evaluateInequality(Storable ... params){
+        for(Storable p: params){
+            variableMap.get(p.name()).setValue(p.value());
+        }
+        return functionInequality.evaluate(variableMap);
+
     }
 }

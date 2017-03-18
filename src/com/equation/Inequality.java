@@ -5,13 +5,13 @@ package com.equation;
  * @author El Altair
  * @version 1.0
  */
-public interface Evaluating {
+public interface Inequality {
 
     /**
      * Describe behavior with values, presented in param
      * @param map - map that
-     * @return double value of calculated, using presented behavior
+     * @return boolean boolean value of calculated behavior
      * @see EquationMap
      */
-    public double evaluate(EquationMap map);
+    public boolean evaluate(EquationMap map);
 }
