@@ -19,10 +19,12 @@ package com.equation;
  *  @see Argument
  */
 
-public class Equation{
+public class Equation extends Storable{
     private Statement functionStatement;
     private Inequality functionInequality;
     private EquationMap variableMap;
+    private Equation linkedEquation;
+    private String name;
 
     /**
      * @param variables List of {@link Storable} that describe used in equation {@link Variable} and
@@ -33,12 +35,20 @@ public class Equation{
      * @since 18.03.2017
      */
     public Equation(Storable ... variables){
+        super("");
         variableMap = new EquationMap();
         for(Storable v:variables){
             variableMap.put(v.name(),v);
         }
     }
 
+    public Equation(String equationName, Storable ... variables){
+        super(equationName);
+        variableMap = new EquationMap();
+        for(Storable v:variables){
+            variableMap.put(v.name(),v);
+        }
+    }
     /**
      * Method that save presented equation behavior for it's lately using
      * @param function lambda expression that describes equation behavior

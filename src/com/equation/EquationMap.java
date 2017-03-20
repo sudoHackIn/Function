@@ -55,4 +55,8 @@ public class EquationMap{
     public Storable get(String name){
         return map.get(name);
     }
+
+    public Equation equation(String name){
+        return (Equation) map.get(name);
+    }
 }
