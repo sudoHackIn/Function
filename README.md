@@ -1,4 +1,4 @@
-# Equation module  ([Javadocs](https://elaltair.github.io/Function/.))
+# Function module  ([Javadocs](https://elaltair.github.io/Function/.))
 This module is used to work with equations different parameter and variable count and changable equation behavior.
 Source files can be founded: `/src/com/function/` JAR file: `/JAR/`
 
